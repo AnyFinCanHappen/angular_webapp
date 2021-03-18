@@ -1,0 +1,11 @@
+{
+    "weatherAPI": {
+        "currentWeather": "https://api.openweathermap.org/data/2.5/weather?",
+        "detailWeather": "https://api.openweathermap.org/data/2.5/onecall?",
+        "units":{
+            "imperial": "units=imperial"
+        },
+        "images": "http://openweathermap.org/img/wn/"
+    },
+    "APIkey":"da06329ba199b036f15ea6e385feaec9"
+}

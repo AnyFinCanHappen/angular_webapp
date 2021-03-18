@@ -1,0 +1,21 @@
+.body{
+    margin-inline:15vw;
+}
+.extra_table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.summary_td{
+    border-bottom:1px solid black;
+    padding:15px; 
+}
+td{
+    border-bottom:1px solid black;
+    padding:15px;
+    padding-top: 0px;
+}
+th{
+    text-align: left;
+    padding-left: 15px;
+    padding-top:15px;
+}

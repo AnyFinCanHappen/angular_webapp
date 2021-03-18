@@ -1,0 +1,17 @@
+<div class="navbar_body">
+  <label>Search</label>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <input
+        type="text"
+        placeholder="City name..."
+        name="city"
+        formControlName="city"
+        class="navbar_input"
+      />
+      <button class="navbar_button">
+        <img src="../../assets/search_icon.png" class="navbar_search_icon" />
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+.hourly_body{
+    text-align: center;
+    margin-inline: 15vw;
+    margin-block-start:30px;
+    border-block: 1px solid black;
+}
+.hourly_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-block: 30px;
+}
+.hourly_item{
+    flex: 1 0 0;
+}
+
+.hourly_icon{
+    width:70px;
+    height: auto;
+}

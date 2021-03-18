@@ -1,0 +1,49 @@
+<div class="body">
+  <div *ngIf="dailySummary && currentDetail">
+    <table class="extra_table">
+      <tr>
+        <td class="summary_td">
+          Today: {{ dailySummary.weather[0].description | properCase }}. It's
+          {{ (currentDetail.temp | doubleToInt) + degree }}. The high is
+          {{ (dailySummary.temp.max | doubleToInt ) + degree }}, and a low of
+          {{ (dailySummary.temp.min | doubleToInt) + degree }}.
+        </td>
+      </tr>
+    </table>
+
+    <table class="extra_table">
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      <tr>
+        <th>SUNRISE</th>
+        <th>SUNSET</th>
+      </tr>
+      <tr>
+        <td>
+          {{
+            (dailySummary.sunrise | epochDate: timezone_offset).getHours()
+              | hourFormat2
+          }}:{{
+            (dailySummary.sunrise | epochDate: timezone_offset).getMinutes()
+              | minuteFormat
+          }}{{
+            (dailySummary.sunrise | epochDate: timezone_offset).getHours()
+              | halfDay
+          }}
+        </td>
+        <td>
+          {{
+            (dailySummary.sunset | epochDate: timezone_offset).getHours()
+              | hourFormat2
+          }}:{{
+            (dailySummary.sunset | epochDate: timezone_offset).getMinutes()
+              | minuteFormat
+          }}{{
+            (dailySummary.sunset | epochDate: timezone_offset).getHours()
+              | halfDay
+          }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

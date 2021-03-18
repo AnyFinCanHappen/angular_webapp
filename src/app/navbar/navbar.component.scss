@@ -1,0 +1,37 @@
+.navbar_body{
+    text-align:center;
+    background-color:rgb(226, 255, 226);
+    padding-block: 40px;
+}
+
+.navbar_input
+{
+    padding: 10px;
+    width: 40%;
+    height: 10px;
+    border: 0px solid transparent;
+    border-radius: 100px;
+    margin-right: -40px;
+    transition: all .2s ease-out;
+}
+
+.navbar_input:focus{
+    padding: 10px;
+    height: 10px;
+    border: 0px solid transparent;
+    border-radius: 100px;
+    margin-right: -40px;
+    width: 45%;
+    transition: all .2s ease-in;   
+    outline-width: 0;
+}
+
+.navbar_button{
+    border:0px solid transparent;
+    background-color: transparent;
+}
+
+.navbar_search_icon{
+    width: 10px;
+    height: auto;
+}

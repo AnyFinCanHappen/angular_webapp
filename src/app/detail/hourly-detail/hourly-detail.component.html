@@ -1,0 +1,15 @@
+<div class="hourly_body">
+  <div *ngIf="hourlyDetail">
+    <div class="hourly_container">
+      <div *ngFor="let detail of hourlyDetail.slice(0, 25)" class="hourly_item">
+        <div>
+          {{ (detail.dt| epochDate:timezone_offset).getHours() | hourFormat}}
+        </div>
+        <img class = "hourly_icon" [src] = "iconURL + detail.weather[0].icon + '@2x.png'">
+        <div>
+          {{ (detail.temp | doubleToInt) + degree}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
