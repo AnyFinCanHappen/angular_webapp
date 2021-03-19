@@ -14,4 +14,7 @@
       </button>
     </div>
   </form>
+  <button (click) = "changeToMetric()">Metric</button>
+  <button (click) = "changeToImperial()">Imperial</button>
+  <div *ngIf = "test">{{(test|async)!.isMetric}}</div>
 </div>

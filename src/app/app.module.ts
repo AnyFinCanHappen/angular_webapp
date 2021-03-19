@@ -19,7 +19,9 @@ import { ExtraDetailComponent } from './detail/extra-detail/extra-detail.compone
 import { HalfDayPipe } from './pipe/half-day/half-day.pipe';
 import { MinuteFormatPipe } from './pipe/minute-format/minute-format.pipe';
 import { HourFormat2Pipe } from './pipe/hour-format/hour-format2.pipe';
-
+import { DegreeToCardinalPipe } from './pipe/degreeToCardinal/degree-to-cardinal.pipe';
+import {StoreModule} from "@ngrx/store";
+import {reducers} from "./app.state";
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,13 +39,15 @@ import { HourFormat2Pipe } from './pipe/hour-format/hour-format2.pipe';
     ExtraDetailComponent,
     HalfDayPipe,
     MinuteFormatPipe,
-    HourFormat2Pipe
+    HourFormat2Pipe,
+    DegreeToCardinalPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
