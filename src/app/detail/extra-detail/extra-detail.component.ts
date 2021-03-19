@@ -15,4 +15,10 @@ export class ExtraDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  metricSpeed(ifMetric:boolean):string{
+    if(ifMetric)
+      return "m/s";
+    else
+      return "mph";
+  }
 }
