@@ -2,8 +2,8 @@
   <div class="overhead_container">
     <div>{{ cityName }}</div>
     <div>{{ cityData.current.weather[0].description | properCase }}</div>
-    <div>{{ (cityData.current.temp | doubleToInt) + degree }}</div>
-    <div>{{"H: " + (cityData.daily[0].temp.max | doubleToInt) + degree + " L: " + (cityData.daily[0].temp.min|doubleToInt) + degree}}</div>
+    <div>{{ (cityData.current.temp | metric:(isMetric$ | async)! | doubleToInt) + degree }}</div>
+    <div>{{"H: " + (cityData.daily[0].temp.max |metric:(isMetric$ | async)!| doubleToInt) + degree + " L: " + (cityData.daily[0].temp.min|metric:(isMetric$ | async)!|doubleToInt) + degree}}</div>
   </div>
   <app-hourly-detail [hourlyDetail] = "cityData.hourly" [timezone_offset] = "cityData.timezone_offset"></app-hourly-detail>
   <app-daily-detail [dailyDetail] = "cityData.daily" [timezone_offset] = "cityData.timezone_offset"></app-daily-detail>

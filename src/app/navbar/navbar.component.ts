@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   form:FormGroup = this.formBuilder.group({
     city: ['', [Validators.required]]
   });
-  test: Observable<Metric>;
+  test: Observable<boolean>;
   constructor(private formBuilder:FormBuilder, private router : Router, private store :Store<AppState>) {
     this.test = store.select("Metric");
   }

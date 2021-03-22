@@ -6,20 +6,20 @@
       <col style="width: 15%" />
       <col style="width: 15%" />
       <tr *ngFor="let detail of dailyDetail.slice(1, dailyDetail.length)">
-        <td class = "daily_row_day">
+        <td class="daily_row_day">
           {{ (detail.dt | epochDate: timezone_offset).getDay() | dayFormat }}
         </td>
-        <td >
+        <td>
           <img
             class="daily_image"
             [src]="iconURL + detail.weather[0].icon + '@2x.png'"
           />
         </td>
-        <td >
-          {{ detail.temp.day | doubleToInt }}
+        <td>
+          {{ detail.temp.day | metric: (isMetric$ | async)! | doubleToInt }}
         </td>
-        <td >
-          {{ detail.temp.night | doubleToInt }}
+        <td>
+          {{ detail.temp.night | metric: (isMetric$ | async)! | doubleToInt }}
         </td>
       </tr>
     </table>

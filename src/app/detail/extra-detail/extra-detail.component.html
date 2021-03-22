@@ -4,9 +4,20 @@
       <tr>
         <td class="summary_td">
           Today: {{ dailySummary.weather[0].description | properCase }}. It's
-          {{ (currentDetail.temp | doubleToInt) + degree }}. The high is
-          {{ (dailySummary.temp.max | doubleToInt) + degree }}, and a low of
-          {{ (dailySummary.temp.min | doubleToInt) + degree }}.
+          {{
+            (currentDetail.temp | metric: (isMetric$ | async)! | doubleToInt) +
+              degree
+          }}. The high is
+          {{
+            (dailySummary.temp.max
+              | metric: (isMetric$ | async)!
+              | doubleToInt) + degree
+          }}, and a low of
+          {{
+            (dailySummary.temp.min
+              | metric: (isMetric$ | async)!
+              | doubleToInt) + degree
+          }}.
         </td>
       </tr>
     </table>
@@ -57,25 +68,34 @@
         <th>FEELS LIKE</th>
       </tr>
       <tr>
-        <td>{{dailySummary.wind_deg | degreeToCardinal}} {{dailySummary.wind_speed | doubleToInt}} {{metricSpeed(false)}}</td>
-        <td>{{(currentDetail.feels_like | doubleToInt) + degree}}</td>
+        <td>
+          {{ dailySummary.wind_deg | degreeToCardinal }}
+          {{ dailySummary.wind_speed | doubleToInt }} {{ metricSpeed(false) }}
+        </td>
+        <td>
+          {{
+            (currentDetail.feels_like
+              | metric: (isMetric$ | async)!
+              | doubleToInt) + degree
+          }}
+        </td>
       </tr>
       <tr>
         <th>PRECIPITATION</th>
         <th>PRESSURE</th>
       </tr>
       <tr>
-        <td *ngIf = "dailySummary.rain">{{dailySummary.rain}} mm</td>
-        <td *ngIf = "!dailySummary.rain">0 mm</td>
-        <td>{{dailySummary.pressure}} hPa</td>
+        <td *ngIf="dailySummary.rain">{{ dailySummary.rain }} mm</td>
+        <td *ngIf="!dailySummary.rain">0 mm</td>
+        <td>{{ dailySummary.pressure }} hPa</td>
       </tr>
       <tr>
         <th>VISIBILITY</th>
         <th>UV INDEX</th>
       </tr>
       <tr>
-        <td>{{currentDetail.visibility}} m</td>
-        <td>{{currentDetail.uvi}}</td>
+        <td>{{ currentDetail.visibility }} m</td>
+        <td>{{ currentDetail.uvi }}</td>
       </tr>
     </table>
   </div>

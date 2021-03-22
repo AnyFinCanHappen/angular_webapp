@@ -1,4 +1,8 @@
 <div class="navbar_body">
+  <div class="metric_button_container">
+    <button class="metric_button" (click)="changeToImperial()">F</button
+    >/<button class="metric_button" (click)="changeToMetric()">C</button>
+  </div>
   <label>Search</label>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
@@ -14,7 +18,4 @@
       </button>
     </div>
   </form>
-  <button (click) = "changeToMetric()">Metric</button>
-  <button (click) = "changeToImperial()">Imperial</button>
-  <div *ngIf = "test">{{(test|async)!.isMetric}}</div>
 </div>

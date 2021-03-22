@@ -2,7 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import {WeatherSerivceService} from "../service/weather-serivce.service"
 import {ActivatedRoute} from "@angular/router"
 import { Observable } from 'rxjs';
-
+import {Store} from "@ngrx/store";
+import {AppState} from "../app.state";
 import * as Constants from "../constants/Constants.json";
 @Component({
   selector: 'app-detail',
@@ -14,7 +15,11 @@ export class DetailComponent implements OnInit{
   cityData$!:Observable<any>;
   cityData!:any;
   cityName!:string;
-  constructor(private weatherService: WeatherSerivceService, private activedRoute : ActivatedRoute) { }
+  isMetric$!:Observable<boolean>;
+  constructor(private weatherService: WeatherSerivceService, private activedRoute : ActivatedRoute, private store:Store<AppState>) { 
+    this.isMetric$ = store.select("Metric");
+  }
+
   ngOnInit(): void {
     this.activedRoute.params.subscribe(param =>{
       if(param.city){

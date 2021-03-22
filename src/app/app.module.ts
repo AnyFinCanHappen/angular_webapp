@@ -22,6 +22,7 @@ import { HourFormat2Pipe } from './pipe/hour-format/hour-format2.pipe';
 import { DegreeToCardinalPipe } from './pipe/degreeToCardinal/degree-to-cardinal.pipe';
 import {StoreModule} from "@ngrx/store";
 import {reducers} from "./app.state";
+import { MetricPipe } from './pipe/metric/metric.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import {reducers} from "./app.state";
     HalfDayPipe,
     MinuteFormatPipe,
     HourFormat2Pipe,
-    DegreeToCardinalPipe
+    DegreeToCardinalPipe,
+    MetricPipe
   ],
   imports: [
     BrowserModule,
