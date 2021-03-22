@@ -2,16 +2,15 @@ import {Action} from "@ngrx/store";
 import {Metric} from "../model/Metric";
 import * as MetricActions from "../actions/MetricActions";
 
-const initialState : Metric = {
-    isMetric:false
-}
-export function reducer(state:Metric = initialState, action: MetricActions.Actions):Metric{
+// const initialState : Metric = {
+//     isMetric:false
+// }
+
+const initialState:boolean = false;
+export function reducer(state:boolean= initialState, action: MetricActions.Actions):boolean{
     switch(action.type){
         case MetricActions.CHANGE_METRIC:
-            let newState:Metric ={
-                isMetric:action.payload
-            }
-            return newState;
+            return action.payload;
         default:
             return state;
     }
