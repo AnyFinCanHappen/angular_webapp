@@ -1,11 +1,50 @@
 <div *ngIf="cityData">
   <div class="overhead_container">
-    <div>{{ cityName }}</div>
-    <div>{{ cityData.current.weather[0].description | properCase }}</div>
-    <div>{{ (cityData.current.temp | metric:(isMetric$ | async)! | doubleToInt) + degree }}</div>
-    <div>{{"H: " + (cityData.daily[0].temp.max |metric:(isMetric$ | async)!| doubleToInt) + degree + " L: " + (cityData.daily[0].temp.min|metric:(isMetric$ | async)!|doubleToInt) + degree}}</div>
+    <div
+      [ngClass]="{
+        city_description_container_sticky: !isFixed,
+        city_description_container: isFixed
+      }"
+    >
+      <div class="city_text">{{ cityName }}</div>
+      <div>{{ cityData.current.weather[0].description | properCase }}</div>
+    </div>
+    <div [ngClass] = "{'current_temp_fixed': isFixed, 'current_temp_color_before': !isOpacity, 'current_temp_color_after': isOpacity}">
+      <div class="current_temp_text">
+        {{
+          (cityData.current.temp | metric: (isMetric$ | async)! | doubleToInt) +
+            degree
+        }}
+      </div>
+      <div>
+        {{
+          "H: " +
+            (cityData.daily[0].temp.max
+              | metric: (isMetric$ | async)!
+              | doubleToInt) +
+            degree +
+            " L: " +
+            (cityData.daily[0].temp.min
+              | metric: (isMetric$ | async)!
+              | doubleToInt) +
+            degree
+        }}
+      </div>
+    </div>
   </div>
-  <app-hourly-detail [hourlyDetail] = "cityData.hourly" [timezone_offset] = "cityData.timezone_offset"></app-hourly-detail>
-  <app-daily-detail [dailyDetail] = "cityData.daily" [timezone_offset] = "cityData.timezone_offset"></app-daily-detail>
-  <app-extra-detail [dailySummary] = "cityData.daily[0]" [currentDetail] = "cityData.current" [timezone_offset] = "cityData.timezone_offset"></app-extra-detail>
+  <div>
+    <app-hourly-detail
+      [hourlyDetail]="cityData.hourly"
+      [timezone_offset]="cityData.timezone_offset"
+    ></app-hourly-detail>
+  </div>
+  <app-daily-detail
+    [dailyDetail]="cityData.daily"
+    [timezone_offset]="cityData.timezone_offset"
+  ></app-daily-detail>
+  <app-extra-detail
+    [dailySummary]="cityData.daily[0]"
+    [currentDetail]="cityData.current"
+    [timezone_offset]="cityData.timezone_offset"
+  ></app-extra-detail>
 </div>

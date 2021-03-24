@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {WeatherSerivceService} from "../service/weather-serivce.service"
 import {ActivatedRoute} from "@angular/router"
 import { Observable } from 'rxjs';
@@ -11,11 +11,14 @@ import * as Constants from "../constants/Constants.json";
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit{
+  @ViewChild("lul") elementView!: ElementRef;
   readonly degree:string = Constants.degree;
   cityData$!:Observable<any>;
   cityData!:any;
   cityName!:string;
   isMetric$!:Observable<boolean>;
+  isFixed:boolean = false;
+  isOpacity:boolean = false;
   constructor(private weatherService: WeatherSerivceService, private activedRoute : ActivatedRoute, private store:Store<AppState>) { 
     this.isMetric$ = store.select("Metric");
   }
@@ -32,6 +35,22 @@ export class DetailComponent implements OnInit{
           this.cityName = this.weatherService.getCityName();
         });
       }
-    })
+    });
+  }
+  
+
+  @HostListener("window:scroll",["$event"])
+  checkScroll(){
+    // console.log(window.pageYOffset);
+    if(window.pageYOffset >= 161){
+      this.isOpacity = true;
+    }
+    else
+      this.isOpacity = false;
+    if(window.pageYOffset >= 208){
+      this.isFixed = true;
+    }
+    else
+      this.isFixed = false;
   }
 }

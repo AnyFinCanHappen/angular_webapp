@@ -1,5 +1,41 @@
-.overhead_container{
-    margin-inline: 20px;
-    margin-block:10px;
-    text-align: center;
+.overhead_container {
+  margin-inline: 20px;
+  margin-block: 10px;
+  text-align: center;
+}
+.city_text {
+  font-size: x-large;
+}
+.current_temp_text {
+  font-size: xx-large;
+}
+.city_description_container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top:5px;
+}
+
+.city_description_container_sticky{
+    position: sticky;
+    top:5px;
+}
+
+.hourly_detail_container {
+  position: sticky;
+
+}
+.current_temp_fixed{
+    position: sticky;
+    top:5px; 
+    margin-top:51px;
+}
+.current_temp_color_after{
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.current_temp_color_before{
+    opacity: 1;
+    transition: opacity 0.3s;
 }
