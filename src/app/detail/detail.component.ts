@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import {WeatherSerivceService} from "../service/weather-serivce.service"
 import {ActivatedRoute} from "@angular/router"
 import { Observable } from 'rxjs';
@@ -11,7 +11,6 @@ import * as Constants from "../constants/Constants.json";
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit{
-  @ViewChild("lul") elementView!: ElementRef;
   readonly degree:string = Constants.degree;
   cityData$!:Observable<any>;
   cityData!:any;
@@ -30,7 +29,6 @@ export class DetailComponent implements OnInit{
         this.weatherService.getCityData().subscribe(data =>{
           console.log(data);
           console.log(this.weatherService.getCityName());
-          //this.cityData$ = this.weatherService.getCityData();
           this.weatherService.getCityData().subscribe(data => this.cityData = data);
           this.cityName = this.weatherService.getCityName();
         });
@@ -41,7 +39,6 @@ export class DetailComponent implements OnInit{
 
   @HostListener("window:scroll",["$event"])
   checkScroll(){
-    // console.log(window.pageYOffset);
     if(window.pageYOffset >= 161){
       this.isOpacity = true;
     }

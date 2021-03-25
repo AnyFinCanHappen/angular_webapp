@@ -2,14 +2,26 @@
   <div class="overhead_container">
     <div
       [ngClass]="{
-        city_description_container_sticky: !isFixed,
-        city_description_container: isFixed
+        city_desc_container_sticky: !isFixed,
+        city_desc_container_fixed: isFixed
       }"
+      #city_desc_container
     >
       <div class="city_text">{{ cityName }}</div>
       <div>{{ cityData.current.weather[0].description | properCase }}</div>
     </div>
-    <div [ngClass] = "{'current_temp_fixed': isFixed, 'current_temp_color_before': !isOpacity, 'current_temp_color_after': isOpacity}">
+    <div
+      id="city_desc_placeholder"
+      *ngIf="isFixed"
+      [ngStyle]="{ height: city_desc_container.offsetHeight + 'px' }"
+    ></div>
+    <div
+      [ngClass]="{
+        current_temp_fixed: isFixed,
+        current_temp_color_before: !isOpacity,
+        current_temp_color_after: isOpacity
+      }"
+    >
       <div class="current_temp_text">
         {{
           (cityData.current.temp | metric: (isMetric$ | async)! | doubleToInt) +
@@ -32,7 +44,10 @@
       </div>
     </div>
   </div>
-  <div>
+  <div
+    class="hourly_detail_container"
+    [ngStyle]="{ top: city_desc_container.offsetHeight +'px' }"
+  >
     <app-hourly-detail
       [hourlyDetail]="cityData.hourly"
       [timezone_offset]="cityData.timezone_offset"

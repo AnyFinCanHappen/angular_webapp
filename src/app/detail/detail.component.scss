@@ -9,26 +9,27 @@
 .current_temp_text {
   font-size: xx-large;
 }
-.city_description_container {
+.city_desc_container_fixed {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  top:5px;
+  top:0px;
+  width: 100%;
+  background-color: white;
 }
 
-.city_description_container_sticky{
+.city_desc_container_sticky{
     position: sticky;
-    top:5px;
+    top:0px;
 }
 
 .hourly_detail_container {
   position: sticky;
-
+  background-color: white;
 }
 .current_temp_fixed{
     position: sticky;
     top:5px; 
-    margin-top:51px;
 }
 .current_temp_color_after{
     opacity: 0;
