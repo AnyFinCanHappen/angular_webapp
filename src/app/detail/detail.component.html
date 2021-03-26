@@ -1,20 +1,10 @@
 <div *ngIf="cityData">
+  <div class="city_desc_container_sticky" #city_desc_container>
+    <div class="city_text">{{ cityName }}</div>
+    <div>{{ cityData.current.weather[0].description | properCase }}</div>
+  </div>
+
   <div class="overhead_container">
-    <div
-      [ngClass]="{
-        city_desc_container_sticky: !isFixed,
-        city_desc_container_fixed: isFixed
-      }"
-      #city_desc_container
-    >
-      <div class="city_text">{{ cityName }}</div>
-      <div>{{ cityData.current.weather[0].description | properCase }}</div>
-    </div>
-    <div
-      id="city_desc_placeholder"
-      *ngIf="isFixed"
-      [ngStyle]="{ height: city_desc_container.offsetHeight + 'px' }"
-    ></div>
     <div
       [ngClass]="{
         current_temp_fixed: isFixed,
@@ -46,7 +36,7 @@
   </div>
   <div
     class="hourly_detail_container"
-    [ngStyle]="{ top: city_desc_container.offsetHeight +'px' }"
+    [ngStyle]="{ top: city_desc_container.offsetHeight + 'px' }"
   >
     <app-hourly-detail
       [hourlyDetail]="cityData.hourly"
