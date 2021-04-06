@@ -5,7 +5,7 @@
   </div>
   <div class="overhead_container">
     <div
-      [ngClass]="{
+      [class]="{
         current_temp_fixed: isFixed,
         current_temp_color_before: !isOpacity,
         current_temp_color_after: isOpacity
@@ -35,7 +35,7 @@
   </div>
   <div
     class="hourly_detail_container"
-    [ngStyle]="{ top: city_desc_container.offsetHeight + 'px' }"
+    [style]="{ top: city_desc_container.offsetHeight + 'px' }"
   >
     <app-hourly-detail
       [hourlyDetail]="cityData.hourly"
